@@ -6,12 +6,25 @@ set modelines=1
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Vim plug {{{
+call plug#begin('~\vimfiles\plugged')
+
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } 
+Plug 'sjl/gundo.vim'
+Plug 'vim-syntastic/syntastic'
+
+call plug#end()
+" }}}
+
 
 " Colors {{{
 syntax enable
 set guifont=Lucida_Console:h10
 set background=dark
-colorscheme deep-space
+colorscheme solarized
 au GUIEnter * simalt ~x
 " }}}
 
@@ -84,18 +97,13 @@ set scrolloff=5 	" lines to show at top and bottom of cursor
 " Backups {{{
 " }}}
 
-" Vim plug {{{
-call plug#begin('~\vimfiles\plugged')
-
-Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } 
-Plug 'sjl/gundo.vim'
-Plug 'vim-syntastic/syntastic'
-
-call plug#end()
+" NERDTree {{{
+autocmd vimenter * NERDTree " Open NERDTree on start
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "Close vim if only NERDTree is opened
 " }}}
 
-
+" Syntastic {{{
 let g:syntastic_javascript_checkers = ['standard']
+" }}}
 
 " vim:foldmethod=marker:foldlevel=0
