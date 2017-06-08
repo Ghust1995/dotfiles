@@ -15,6 +15,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } 
 Plug 'sjl/gundo.vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'ervandew/supertab'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 
 call plug#end()
 " }}}
@@ -78,6 +82,9 @@ map <leader>P "+P
 map <leader>y "+y
 " Fixes indentation
 nnoremap <F7> mzgg=G`z
+" Moving between splits
+nnoremap J <c-w>W
+nnoremap K <c-w><c-w>
 " }}}
 
 " TODO: {{{
@@ -95,6 +102,9 @@ set scrolloff=5 	" lines to show at top and bottom of cursor
 " }}}
 
 " Backups {{{
+set backup
+set backupdir=$TEMP
+set dir=$TEMP
 " }}}
 
 " NERDTree {{{
