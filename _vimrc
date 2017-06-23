@@ -1,6 +1,7 @@
 scriptencoding utf-8
 set encoding=utf-8
 set modelines=1
+set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -19,17 +20,16 @@ Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-
 call plug#end()
 " }}}
 
-
 " Colors {{{
 syntax enable
-set guifont=Lucida_Console:h10
+set guifont=dejavu_sans_mono_for_powerline:h10
 set background=dark
 colorscheme solarized
 au GUIEnter * simalt ~x
+let g:airline_solarized_bg='dark'
 " }}}
 
 " Spaces and Tabs {{{
@@ -40,7 +40,7 @@ set expandtab
 " }}}
 
 " UI Config {{{
-set number
+set relativenumber
 set showcmd
 set cursorline
 filetype indent plugin on
@@ -54,6 +54,7 @@ set incsearch						" search results as typing
 set hlsearch						" highlight searches
 set ignorecase		
 set smartcase						" will use case sensitive if capital letter used
+nnoremap <space> :noh<cr>
 " }}}
 
 " Folding {{{
@@ -64,8 +65,18 @@ set foldmethod=indent
 " }}}
 
 " Movement {{{
-" nnoremap j gj
-"nnoremap k gk
+nnoremap j gj
+nnoremap k gk
+nnoremap l <NOP>
+nnoremap h <NOP>
+inoremap <up> <NOP>
+inoremap <down> <NOP>
+inoremap <left> <NOP>
+inoremap <right> <NOP>
+nnoremap <up> <NOP>
+nnoremap <down> <NOP>
+nnoremap <left> <NOP>
+nnoremap <right> <NOP>
 " highlight last block
 nnoremap gV `[v`]
 " }}}
@@ -114,6 +125,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Syntastic {{{
 let g:syntastic_javascript_checkers = ['standard']
+" }}}
+
+" Airline {{{
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
