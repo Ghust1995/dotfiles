@@ -19,7 +19,11 @@ Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+<<<<<<< HEAD
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+=======
+Plug 'mileszs/ack.vim'
+>>>>>>> 0d4ca9f3bda6e8f32e0e766b67ea72dceed4b5e5
 
 call plug#end()
 " }}}
